@@ -37,14 +37,34 @@ It uses the native Windows API `SetProcessWorkingSetSize` to request the OS to t
 
 ## Building from Source
 
-Requires MinGW-w64 (g++).
+Requires MinGW-w64 (g++ and windres).
 
+1. Create `admin.manifest`:
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security>
+      <requestedPrivileges>
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false"/>
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+</assembly>
+```
+
+2. Create `resource.rc`:
+```rc
+1 24 "admin.manifest"
+```
+
+3. Compile:
 ```bash
-# 64-bit static build (Tiny size)
-g++ -Os -s -static -o RAMCleanerAuto_x64.exe RAMCleanerAuto.cpp -lpsapi
+# Compile resource
+windres resource.rc -O coff -o resource.o
 
-# 32-bit static build
-g++ -Os -s -static -o RAMCleanerAuto_x86.exe RAMCleanerAuto.cpp -lpsapi
+# Compile executable (Static linking + Resource)
+g++ -Os -s -static -o RAMCleanerAuto.exe RAMCleanerAuto.cpp resource.o -lpsapi
 ```
 
 ## License
