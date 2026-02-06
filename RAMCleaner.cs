@@ -284,7 +284,7 @@ namespace RAMCleaner
                 resultText = String.Format("Done! ({0} procs cleaned)", cleaned);
             }
 
-            resultText += "\nCek Task Manager (Ctrl+Shift+Esc)";
+            resultText += "\nCheck Task Manager (Ctrl+Shift+Esc)";
             statusLabel.Text = resultText;
 
             // Show Windows notification
@@ -299,17 +299,17 @@ namespace RAMCleaner
                 notifyIcon.Icon = SystemIcons.Information;
                 notifyIcon.Visible = true;
                 
-                string title = "RAM Cleaner - Selesai!";
+                string title = "RAM Cleaner - Complete!";
                 string message;
                 
                 if (freedMB > 1024)
-                    message = String.Format("Berhasil membebaskan {0:F2} GB RAM\n{1} proses dibersihkan", freedMB/1024, cleaned);
+                    message = String.Format("Successfully freed {0:F2} GB RAM\n{1} processes cleaned", freedMB/1024, cleaned);
                 else if (freedMB > 0)
-                    message = String.Format("Berhasil membebaskan {0:F0} MB RAM\n{1} proses dibersihkan", freedMB, cleaned);
+                    message = String.Format("Successfully freed {0:F0} MB RAM\n{1} processes cleaned", freedMB, cleaned);
                 else
-                    message = String.Format("{0} proses dibersihkan", cleaned);
+                    message = String.Format("{0} processes cleaned", cleaned);
 
-                message += "\n\nTekan Ctrl+Shift+Esc untuk cek Task Manager";
+                message += "\n\nPress Ctrl+Shift+Esc to open Task Manager";
 
                 notifyIcon.BalloonTipTitle = title;
                 notifyIcon.BalloonTipText = message;
