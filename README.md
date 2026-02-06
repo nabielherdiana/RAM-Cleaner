@@ -27,10 +27,11 @@ Get the latest release from the [Releases](../../releases) page.
 
 ## Usage
 
-1. Download the appropriate version for your system
-2. Run the executable (requires Administrator privileges)
-3. Click **CLEAN RAM**
-4. Check Task Manager to verify results
+1. Open **Task Manager** (Ctrl+Shift+Esc) and note your current RAM usage
+2. Download the appropriate version for your system
+3. Run the executable (requires Administrator privileges)
+4. Click **CLEAN RAM**
+5. Compare RAM usage in Task Manager before and after to see the difference
 
 ## How It Works
 
