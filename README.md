@@ -27,12 +27,11 @@ Get the latest release from the [Releases](../../releases) page.
 | `RAMCleaner_x86.exe` | Windows 32-bit |
 
 ### Auto Version (instant clean, no GUI)
-Runs automatically on launch, cleans RAM, shows results, press any key to exit.
+Written in C++. Runs automatically on launch, cleans RAM, shows results, press any key to exit.
 
-| File | Architecture |
-|------|--------------|
-| `RAMCleanerAuto_x64.exe` | Windows 64-bit |
-| `RAMCleanerAuto_x86.exe` | Windows 32-bit |
+| File | Size |
+|------|------|
+| `RAMCleanerAuto.exe` | 20 KB |
 
 ## Usage
 
