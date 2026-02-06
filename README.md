@@ -29,9 +29,10 @@ Get the latest release from the [Releases](../../releases) page.
 ### Auto Version (instant clean, no GUI)
 Written in C++. Runs automatically on launch, cleans RAM, shows results, press any key to exit.
 
-| File | Size |
-|------|------|
-| `RAMCleanerAuto.exe` | 20 KB |
+| File | Architecture |
+|------|--------------|
+| `RAMCleanerAuto_x64.exe` | Windows 64-bit |
+| `RAMCleanerAuto_x86.exe` | Windows 32-bit |
 
 ## Usage
 
