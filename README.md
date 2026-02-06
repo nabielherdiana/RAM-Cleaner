@@ -1,72 +1,51 @@
-# RAM Cleaner
+# RAMCleaner
 
-Lightweight Windows utility to optimize RAM usage by trimming working set memory from running processes.
+A tiny, powerful utility to optimize memory usage on Windows.
+
+![RAM Cleaner](Screenshot%202026-02-06%20210139.png)
 
 ## Features
 
-- Clean and minimal interface
-- Works on both 32-bit and 64-bit Windows
-- Displays real-time memory statistics
-- Shows freed memory after cleaning
-- Desktop notification on completion
-- Portable - no installation required
-- Tiny footprint (~14 KB)
-
-## Screenshot
-
-![RAM Cleaner](Screenshot%202026-02-06%20194347.png)
+- **Instant Optimization**: Automatically cleans RAM upon launch.
+- **Tiny Footprint**: Only ~44 KB (Static Build).
+- **Native Performance**: Written in C++ (Win32 API), no dependencies.
+- **Portable**: No installation required.
+- **Safe**: Uses standard Windows APIs to trim working sets.
 
 ## Download
 
 Get the latest release from the [Releases](../../releases) page.
 
-### GUI Version (with interface)
-| File | Architecture |
-|------|--------------|
-| `RAMCleaner_x64.exe` | Windows 64-bit |
-| `RAMCleaner_x86.exe` | Windows 32-bit |
+| File | Architecture | Size |
+|------|--------------|------|
+| `RAMCleanerAuto_x64.exe` | Windows 64-bit | 44 KB |
+| `RAMCleanerAuto_x86.exe` | Windows 32-bit | 44 KB |
 
-### Auto Version (instant clean, no GUI)
-Written in C++. Runs automatically on launch, cleans RAM, shows results, press any key to exit.
+## How to Use
 
-| File | Architecture |
-|------|--------------|
-| `RAMCleanerAuto_x64.exe` | Windows 64-bit |
-| `RAMCleanerAuto_x86.exe` | Windows 32-bit |
-
-## Usage
-
-1. Open **Task Manager** (Ctrl+Shift+Esc) and note your current RAM usage
-2. Download the appropriate version for your system
-3. Run the executable (requires Administrator privileges)
-4. Click **CLEAN RAM**
-5. Compare RAM usage in Task Manager before and after to see the difference
+1. **Download** the executable for your system.
+2. **Run** it (Run as Administrator for best results).
+3. The tool will:
+   - Display initial RAM usage
+   - Clean memory pages from all processes
+   - Show amount of RAM freed
+4. **Press any key** to close the window.
 
 ## How It Works
 
-The application uses the Windows API `SetProcessWorkingSetSize` to request the operating system to trim the working set of each running process. This moves inactive memory pages to the page file, freeing up physical RAM for other applications.
-
-This is a safe, documented Windows memory management operation that does not delete files or modify system settings.
-
-## Requirements
-
-- Windows 7 / 8 / 10 / 11
-- .NET Framework 4.0 (included in Windows by default)
-- Administrator privileges for full functionality
+It uses the native Windows API `SetProcessWorkingSetSize` to request the OS to trim the working set of running processes. This safely moves inactive memory pages to the System Page File, freeing up physical RAM for other applications. It does **not** terminate processes or delete any data.
 
 ## Building from Source
 
-Compile using the .NET Framework C# compiler:
+Requires MinGW-w64 (g++).
 
-```batch
-:: 64-bit
-%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /platform:x64 /out:RAMCleaner_x64.exe /win32manifest:app.manifest /reference:System.dll /reference:System.Drawing.dll /reference:System.Windows.Forms.dll /reference:Microsoft.VisualBasic.dll RAMCleaner.cs
+```bash
+# 64-bit static build (Tiny size)
+g++ -Os -s -static -o RAMCleanerAuto_x64.exe RAMCleanerAuto.cpp -lpsapi
 
-:: 32-bit
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\csc.exe /target:winexe /platform:x86 /out:RAMCleaner_x86.exe /win32manifest:app.manifest /reference:System.dll /reference:System.Drawing.dll /reference:System.Windows.Forms.dll /reference:Microsoft.VisualBasic.dll RAMCleaner.cs
+# 32-bit static build
+g++ -Os -s -static -o RAMCleanerAuto_x86.exe RAMCleanerAuto.cpp -lpsapi
 ```
-
-Or run `build_all.bat` to compile both versions.
 
 ## License
 
