@@ -1,0 +1,13 @@
+# Build output
+*.exe
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+bin/
+obj/
+
+# OS files
+Thumbs.db
+.DS_Store
