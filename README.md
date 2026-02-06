@@ -14,7 +14,7 @@ Lightweight Windows utility to optimize RAM usage by trimming working set memory
 
 ## Screenshot
 
-![RAM Cleaner](Screenshot.png)
+![RAM Cleaner](Screenshot%202026-02-06%20194347.png)
 
 ## Download
 
